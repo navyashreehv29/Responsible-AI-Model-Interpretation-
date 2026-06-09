@@ -1,91 +1,35 @@
-# Responsible-AI-Model-Interpretation-
-This project emphasizes the importance of understanding and ensuring fairness, transparency, and accountability in machine learning models. Using interpretability techniques like SHAP and LIME, along with bias detection, we assess how our customer churn prediction model behaves across different sensitive groups (e.g., gender, age).
-Overview
-The goal of this project is to analyze a customer churn prediction model built with a RandomForestClassifier trained on Telco customer data. We focus on interpretability and fairness to ensure the model’s decisions are transparent and equitable across sensitive demographic groups.
+# Model Fairness, Bias, and Explainability Analysis
+## Environment Setup
+1. Ensure Python 3.8+ is installed.
+2. Install dependencies:
+   ```
+   pip install -r requirements.txt
+   ```
+   (includes pandas, numpy, scikit-learn, matplotlib, shap, lime, imbalanced-learn)
 
-Dataset
+## Running the Analysis
+1. Open `task3.ipynb` in Jupyter/VSCode.
+2. Run all cells sequentially.
+   - Cells 1-2: Data loading, preprocessing, model training (RandomForestClassifier).
+   - Cell 3: Feature importance plot.
+   - Cell 4: Install additional libs if needed.
+   - Cells 5-7: SHAP global summary, bar plot, force plot (local explanation).
+   - Cell 8: LIME local explanation.
+   - Cells 9-11: Basic bias checks (gender accuracy, prediction rate, FPR).
+   - Cells 12-15: SMOTE mitigation, post-mitigation performance.
+   - Final cell: Complete analysis with bias tables/plots before/after mitigation.
 
-Customer Churn Data: customer_churn_data.csvContains Telco customer information, including features like tenure, monthly charges, contract type, and sensitive attributes such as gender and senior citizen status.
+## Key Outputs
+- SHAP summary plots: Global feature impacts.
+- LIME: Local prediction explanations.
+- Bias metrics: FPR/TPR/Accuracy/Prediction Rate by gender_Male (0=Female,1=Male), SeniorCitizen (0/1).
+- Mitigation: SMOTE reduces disparity.
 
+## Screenshots
+- screenshot 1.png, Screenshot 2.png: Existing model outputs.
+- Run notebook for new plots (SHAP/LIME/bias comparisons).
 
-Model & Analysis
+Dataset: `customer_churn_data.csv` (Telco churn, sensitive attrs: gender, SeniorCitizen).
 
-The model predicts customer churn (Yes/No) based on various features.
-Feature importance is assessed to identify key drivers.
-Global explainability is performed with SHAP to understand feature impacts across the dataset.
-Local explanations are provided with LIME to interpret individual predictions.
-Bias detection measures disparities in false positive rates, true positive rates, and prediction rates across sensitive groups (gender, SeniorCitizen).
+No code modifications needed - analysis fully implemented in notebook.
 
-
-Fairness & Bias Mitigation
-
-Initial bias analysis reveals disparities in error rates and prediction metrics between groups.
-Mitigation strategies such as SMOTE oversampling are applied to reduce bias.
-Post-mitigation analysis shows improved fairness metrics while maintaining overall model performance.
-
-
-Interpretability Techniques
-
-SHAP (SHapley Additive exPlanations): Provides global feature impact summaries and local explanations.
-LIME (Local Interpretable Model-agnostic Explanations): Offers local interpretability for individual predictions.
-
-
-Environment Setup
-Ensure Python 3.8+ is installed. Then, install dependencies:
-
-          
-            
-            
-          
-          pip install -r requirements.txt
-      Running the Analysis
-
-Open the Jupyter notebook task3.ipynb.
-Run all cells sequentially:
-Data loading and preprocessing.
-Model training.
-Feature importance visualization.
-SHAP global and local explanations.
-LIME local explanation.
-Bias detection and metrics.
-Bias mitigation with SMOTE.
-Post-mitigation evaluation and reporting.
-
-
-
-
-Dependencies
-The project dependencies are listed in the requirements.txt file:
-
-          
-            
-            
-          
-          fastapi
-uvicorn
-pandas
-scikit-learn
-pickle-mixin
-      Install with:
-
-          
-            
-            
-          
-          pip install -r requirements.txt
-      
-Screenshots & Visualizations
-
-Existing model outputs and interpretability plots are included as screenshot 1.png and screenshot 2.png.
-Re-run the notebook to generate updated plots based on current data and models.
-
-
-Additional Notes
-
-Ensure all links are accessible for dataset and notebook references.
-Regularly monitor model fairness metrics in production.
-Conduct periodic audits with SHAP and LIME for high-risk predictions.
-
-
-Conclusion
-This project demonstrates a responsible approach to deploying machine learning models by integrating interpretability and fairness assessments. It highlights the importance of transparency and bias mitigation in building trustworthy AI systems.
